@@ -1,0 +1,14 @@
+Создайте собственную реализацию функции reduce().
+
+reduce([1, 2, 3, 4], (a, b) => a + b, 0) // 10
+
+
+alert(reduce([1, 2, 3, 4], (a, b) => a + b, 0)); // 10
+
+function reduce(arr, callback, init = 0){
+	let acc = init;	
+  for (let i = 0; i<=arr.length-1; i++){
+  	acc = callback(acc, arr[i])
+  }
+  return acc
+}

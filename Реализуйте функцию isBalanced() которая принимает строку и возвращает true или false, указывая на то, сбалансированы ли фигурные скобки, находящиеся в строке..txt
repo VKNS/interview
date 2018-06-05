@@ -1,0 +1,36 @@
+Реализуйте функцию isBalanced() которая принимает строку и возвращает true или false, указывая на то, сбалансированы ли фигурные скобки, находящиеся в строке.
+
+alert(isBalanced('}{')               )       // false
+alert(isBalanced('{{}')    )                  // false
+alert(isBalanced('{}{}{{}}{{{}}}')     )                // true
+alert(isBalanced('foo { bar { baz } boo }'))  // true
+alert(isBalanced('foo { bar { baz }')  )      // false
+alert(isBalanced('foo { bar } }')     )       // false
+
+function isBalanced(str){
+	let res = [];
+	for (const char of str){
+  	if (char === '{' || char === '}'){
+    	res.push(char);
+    }
+  }
+  if (res[0] !== '{'){ return false }
+  if (res.length%2===1){ return false }
+  for (let i = 0; i<=res.length-1; i++){
+  	
+  	if (res[i] === '{'){
+    	let right = [];
+    	for (let k = i+1; k<=res.length-1; k += 2){
+      	if (res[k] === '}'){
+        	right.push('}');
+        }
+      }
+      if (right.length === 0){
+      	return false;
+      }
+    }
+  }
+  return true
+}
+
+// еще можно было проверкой типов typeof типо если существует то чики пуки
